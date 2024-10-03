@@ -1,6 +1,3 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import apiClient from "../services/api-client";
 import {
   List,
   ListItem,
@@ -9,27 +6,10 @@ import {
   UnorderedList,
   Text,
 } from "@chakra-ui/react";
-
-interface gamesResponse {
-  count: number;
-  results: Game[];
-}
-
-interface Game {
-  id: number;
-  name: string;
-}
+import useGames from "../hooks/useGames";
 
 const GameGrid = () => {
-  const [games, setGames] = useState<Game[]>([]);
-  const [error, setError] = useState("");
-
-  useEffect(() => {
-    apiClient
-      .get<gamesResponse>("/games")
-      .then((response) => setGames(response.data.results))
-      .catch((error) => setError(error.message));
-  }, []);
+  const { games, error } = useGames();
 
   return (
     <>
