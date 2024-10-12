@@ -5,15 +5,23 @@ import Navbar from "./components/Navbar";
 import GameGrid from "./components/GameGrid";
 import GenreList from "./components/GenreList";
 import useData from "./hooks/useData";
-import useGames from "./hooks/useGames";
+import useGames, { Platform } from "./hooks/useGames";
 import useGenres, { Genre } from "./hooks/useGenres";
+import PlatformSelector from "./components/PlatformSelector";
 
 function App() {
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+  const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(
+    null
+  );
 
   const onSelectGenre = useCallback((genre: Genre) => {
     setSelectedGenre(genre);
   }, []);
+
+  const onSelectPlatform = (platform: Platform) => {
+    setSelectedPlatform(platform);
+  };
 
   return (
     <>
@@ -39,7 +47,14 @@ function App() {
           </GridItem>
         </Show>
         <GridItem area="main">
-          <GameGrid selectedGenre={selectedGenre} />
+          <PlatformSelector
+            selectedPlatform={selectedPlatform}
+            onSelectPlatform={onSelectPlatform}
+          />
+          <GameGrid
+            selectedGenre={selectedGenre}
+            selectedPlatform={selectedPlatform}
+          />
         </GridItem>
       </Grid>
     </>
