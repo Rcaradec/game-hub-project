@@ -1,5 +1,4 @@
-import { useCallback, useState } from "react";
-import "./App.css";
+import { useState } from "react";
 import {
   Box,
   Button,
