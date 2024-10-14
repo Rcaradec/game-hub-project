@@ -20,7 +20,7 @@ const GenreList = ({ onSelectGenre, selectedGenre }: GenreListProps) => {
 
   if (isLoading) return <Spinner />;
 
-  if (error) return;
+  if (error) return null;
 
   return (
     <>
