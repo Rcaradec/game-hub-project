@@ -3,7 +3,6 @@ import {
   Heading,
   HStack,
   Image,
-  Img,
   List,
   ListItem,
   Spinner,
@@ -20,6 +19,7 @@ const GenreList = ({ onSelectGenre, selectedGenre }: GenreListProps) => {
   const { data, isLoading, error } = useGenres();
 
   if (isLoading) return <Spinner />;
+
   if (error) return;
 
   return (
@@ -28,7 +28,7 @@ const GenreList = ({ onSelectGenre, selectedGenre }: GenreListProps) => {
         Genres
       </Heading>
       <List>
-        {data.map((genre: Genre) => (
+        {data.map((genre) => (
           <ListItem key={genre.id} paddingY="5px">
             <HStack>
               <Image
