@@ -1,13 +1,18 @@
-import useData from "./useData";
+import genres from "../data/genres";
 import { Game } from "./useGames";
 
 export interface Genre {
   id: number;
   name: string;
   image_background: string;
-  slug: string;
-  games: Game[];
 }
+// Api call:
+// const useGenres = () => useData<Genre>("/genres");
 
-const useGenres = () => useData<Genre>("/genres");
+// Integrated data from /data for performance:
+const useGenres = () => ({
+  data: genres,
+  isLoading: false,
+  error: null,
+});
 export default useGenres;
