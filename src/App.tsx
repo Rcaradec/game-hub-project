@@ -1,8 +1,10 @@
 import { useCallback, useState } from "react";
 import "./App.css";
 import {
+  Box,
   Button,
   ButtonGroup,
+  Flex,
   Grid,
   GridItem,
   HStack,
@@ -62,19 +64,21 @@ function App() {
           </GridItem>
         </Show>
         <GridItem area="main">
-          <HStack paddingLeft={2}>
+          <Box paddingLeft={2}>
             <GameHeading gameQuery={gameQuery} />
-          </HStack>
-          <HStack spacing={5} paddingLeft={2} marginBottom={5}>
-            <PlatformSelector
-              selectedPlatform={gameQuery.platform}
-              onSelectPlatform={onSelectPlatform}
-            />
-            <SortSelector
-              onSelectSortOrder={onSelectSortOrder}
-              sortOrder={gameQuery.sortOrder}
-            />
-          </HStack>
+            <Flex marginBottom={5}>
+              <Box marginRight={5}>
+                <PlatformSelector
+                  selectedPlatform={gameQuery.platform}
+                  onSelectPlatform={onSelectPlatform}
+                />
+              </Box>
+              <SortSelector
+                onSelectSortOrder={onSelectSortOrder}
+                sortOrder={gameQuery.sortOrder}
+              />
+            </Flex>
+          </Box>
           <GameGrid gameQuery={gameQuery} />
         </GridItem>
       </Grid>
